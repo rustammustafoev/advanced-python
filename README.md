@@ -28,3 +28,5 @@ class Cube(Square):
         face = super().getArea()
         return face * self.height
 ```
+## Multiple Inheritance
+To inspect what will be called first when ``super()`` used we use ``className.__mro__``
