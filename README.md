@@ -1,5 +1,6 @@
 ## Supercharging Classes With Python super()
 The `super()` keyword allows us to call parent class method from a child class
+## Single Inheritance
 ```python
 class Rectangle:
     def __init__(self, height, width):
