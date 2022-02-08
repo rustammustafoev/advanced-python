@@ -111,3 +111,25 @@ L[A(B, C)] = A + merge(L[B], L[C], BC) = A + merge(BDFO, CO, BC) = A + B + merge
 
 print(A.__mro__)  # comparing our result with the built-in method
 ```
+## Closures
+```python
+"""
+Closure is an inner or nested function that carries information about its enclosing scope, even though this scope has completed its execution. We can reuse as much as we want because they don't forget their respective state information
+"""
+
+# Calculating the mean of some sample data
+def mean():
+    sample = []
+
+    def _mean(number):
+        sample.append(number)
+        print(sample)
+        return sum(sample) / len(sample)
+
+    return _mean
+current_mean = mean()
+print(current_mean(10))
+print(current_mean(15))
+print(current_mean(12))
+print(current_mean(11))
+```
