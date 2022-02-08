@@ -83,3 +83,31 @@ class RightPyramid(Square, Triangle):
         triangle_area = super().tri_area()
         return triangle_area * 4 + base_area
 ```
+## C3 Linearization (Method Resolution Order)
+```python
+class D(object):
+    pass
+
+class F(object):
+    pass
+
+class C(object):
+    pass
+
+class B(D, F):
+    pass
+
+class A(B, C):
+    pass
+"""
+    MRO logic under the hood
+L[D(O)] = D + merge(L[O], O) = DO
+L[F(O)] = FO
+L[C(0)] = CO
+L[B(D, F)] = B + merge(L[D], L[F], DF) = B + merge(DO, FO, DF) = B + D + merge(O, FO, F) + B + D + F + O = BDFO
+L[A(B, C)] = A + merge(L[B], L[C], BC) = A + merge(BDFO, CO, BC) = A + B + merge(DFO, CO, C) = \
+= A + B + D + merge(FO, CO, C) = A + B + D + F + merge(O, CO, C) + A + B + D + F + C + O = ABDFCO  # result
+"""
+
+print(A.__mro__)  # comparing our result with the built-in method
+```
